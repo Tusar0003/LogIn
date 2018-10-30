@@ -70,17 +70,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void get() {
         ApiService apiService = ApiClient.getApiClient().create(ApiService.class);
-        Call<List<GetResponse>> call = apiService.getUser("1");
-        call.enqueue(new Callback<List<GetResponse>>() {
+        Call<List<User>> call = apiService.getUser("1");
+        call.enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<List<GetResponse>> call, Response<List<GetResponse>> response) {
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.isSuccessful()) {
-                    Log.e(TAG, "onResponse: " + response.body().toString());
+                    Log.e(TAG, "onResponse: " + response.body().get(0).getPassword());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<GetResponse>> call, Throwable t) {
+            public void onFailure(Call<List<User>> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });

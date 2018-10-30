@@ -22,5 +22,5 @@ public interface ApiService {
     Call<String> logIn(@Query("user_name") String userName, @Query("password") String password);
 
     @GET("get.php")
-    Call<List<GetResponse>> getUser(@Query("id") String id);
+    Call<List<User>> getUser(@Query("id") String id);
 }
